@@ -55,30 +55,49 @@ class matriz:
                 return
     
     def multvector(self):
-        self.tamvector=int(input("Ingrese el tamaño del vector"))
+        self.tamvector = int(input("Ingrese el tamaño del vector: "))
+
+        self.vector = [0 for _ in range(self.tamvector)]
+
         for i in range(self.tamvector):
-            self.vector[i]=int(input(f"Elemento [{i}] del vector:"))
-        print("Desea multiplicar la matriz 1 o la matriz 2 por el vector?")
-        opc=int(input("Ingrese la opción deseada: "))
+            self.vector[i] = int(input(f"Elemento [{i}] del vector: "))
+
+        print("¿Desea multiplicar la matriz 1 o la matriz 2 por el vector?")
+        opc = int(input("Ingrese la opción deseada: "))
+
         match opc:
-            case 1: 
+            case 1:
                 if self.tamvector == self.columnas1:
+                    self.resultado = [0 for _ in range(self.filas1)]
+
                     for i in range(self.filas1):
-                        for j in range (self.columnas1):
-                            self.resultado[i]+=self.matriz1[i][j]*self.vector[j]
+                        for j in range(self.columnas1):
+                            self.resultado[i] += self.matriz1[i][j] * self.vector[j]
+
+                    print("Resultado de la multiplicación:")
+                    print(self.resultado)
+
                 else:
                     print("No se puede realizar la multiplicación.")
                     print("El tamaño del vector debe ser igual")
                     print("al número de columnas de la matriz 1.")
+
             case 2:
                 if self.tamvector == self.columnas2:
+                    self.resultado = [0 for _ in range(self.filas2)]
+
                     for i in range(self.filas2):
-                        for j in range (self.columnas2):
-                            self.resultado[i]+=self.matriz2[i][j]*self.vector[j]
+                        for j in range(self.columnas2):
+                            self.resultado[i] += self.matriz2[i][j] * self.vector[j]
+
+                    print("Resultado de la multiplicación:")
+                    print(self.resultado)
+
                 else:
                     print("No se puede realizar la multiplicación.")
                     print("El tamaño del vector debe ser igual")
                     print("al número de columnas de la matriz 2.")
+
             case _:
                 print("Opción inválida. Por favor, elija 1 o 2.")
 
